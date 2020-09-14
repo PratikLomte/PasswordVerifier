@@ -1,0 +1,392 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"pa",
+				"passcopy"
+			],
+			[
+				"wm",
+				"wmark"
+			],
+			[
+				"in",
+				"input_pdf"
+			],
+			[
+				"pdf",
+				"pdf_combiner"
+			],
+			[
+				"cl",
+				"clean_name"
+			],
+			[
+				"fi",
+				"fil_img"
+			],
+			[
+				"Image",
+				"ImageFilter"
+			],
+			[
+				"trans",
+				"translation"
+			],
+			[
+				"a",
+				"assertTrue"
+			],
+			[
+				"ans",
+				"answer"
+			],
+			[
+				"m",
+				"my_file"
+			],
+			[
+				"rand",
+				"randint"
+			],
+			[
+				"s",
+				"Super_List"
+			],
+			[
+				"ss",
+				"SuperList"
+			],
+			[
+				"S",
+				"Simon"
+			],
+			[
+				"Cat",
+				"Cat"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"contents": "import requests\nimport hashlib\nimport sys\n\ndef request_api_data(query_char):\n  url = ('https://api.pwnedpasswords.com/range/' + query_char)\n  res = requests.get(url) #returns remaining digits of all passwords(in sha1 encryption) which have first 5 sha1 characters same\n  if res.status_code != 200:\n    raise RuntimeError(f'Error fetching: {res.status_code}, check the api and try again')\n  return res\n\ndef get_password_leaks_count(hashes, hash_to_check):\n  hashes = (line.split(':') for line in hashes.text.splitlines())\n  for h, count in hashes:\n    if h == hash_to_check:\n      return count\n  return 0\n\ndef pwned_api_check(password):\n  sha1password = hashlib.sha1(password.encode('utf-8')).hexdigest().upper()\n  first5_char, tail = sha1password[:5], sha1password[5:]\n  response = request_api_data(first5_char)\n  return get_password_leaks_count(response, tail)\n\ndef main(args):\n  # pscopy = ' '.join(str(e) for e in args)\n  # passcopy = open('pw.txt', mode = 'w')\n  # passcopy.write(pscopy)\n  # passcopy.close()\t\n\n  for password in args:\n    count = pwned_api_check(password)\n    if count:\n      print(f'{password} was found {count} times... you should probably change your password!')\n    else:\n      print(f'{password} was NOT found. Carry on!')\n  return 'done!'\n\nif __name__ == '__main__':\n  sys.exit(main(sys.argv[1:]))\n\n",
+			"file": "psc",
+			"file_size": 1367,
+			"file_write_time": 132364330530014996,
+			"settings":
+			{
+				"buffer_size": 1326,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"Build With: Python3"
+			],
+			[
+				"s",
+				"Set Syntax: Python3"
+			],
+			[
+				"bu",
+				"Build With: Python3"
+			],
+			[
+				"bui",
+				"Build With: Python3"
+			],
+			[
+				"se",
+				"Set Syntax: Python3"
+			],
+			[
+				"set",
+				"Set Syntax: Python3"
+			],
+			[
+				"b",
+				"About"
+			],
+			[
+				"set s",
+				"Set Syntax: Python3"
+			],
+			[
+				"buil",
+				"Build With: Python"
+			],
+			[
+				"bul",
+				"Build: Cancel"
+			],
+			[
+				"package control ins",
+				"Package Control: Install Package"
+			],
+			[
+				"create ",
+				"Package Control: Create Package File"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"preference",
+				"Preferences: Package Control Settings – User"
+			],
+			[
+				"py",
+				"Build With: Python3"
+			],
+			[
+				"pyt",
+				"Build With: Python3"
+			],
+			[
+				"pyth",
+				"Build With: Python3"
+			],
+			[
+				"ins",
+				"Install Package Control"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 165.0,
+		"history":
+		[
+			"~\\Desktop python3 random.py 25",
+			"~\\Desktop python3 random.py 2 5",
+			"~\\Desktop python3 random",
+			"~\\Desktop python3 random.py 26",
+			"~/Desktop python3 random.py 2 6",
+			"~\\Desktop python3 random.py",
+			"~\\Desktop python3 random.py ",
+			"~\\Desktop python3 random.py 2 6",
+			"~/desktop",
+			"~\\Desktop",
+			"~/Desktop",
+			"desktop"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/Users/Admin/Desktop/PL/PasswordChecker"
+	],
+	"file_history":
+	[
+		"/C/Users/Admin/Desktop/PL/PasswordChecker/pw.txt",
+		"/C/Users/Admin/Desktop/PL/pdf/wmpdf",
+		"/C/Users/Admin/Desktop/PL/pdf/pdf.py",
+		"/C/Users/Admin/Desktop/PL/Image_Scripting/p.py",
+		"/C/Users/Admin/Desktop/PL/Image_Scripting/Excercise.py",
+		"/C/Users/Admin/Desktop/PL/Image_Scripting/Image_Scripting.py",
+		"/C/Users/Admin/Desktop/PL/Image_Scripting/Images/Cassiopeia_A_Spitzer_Crop.jpg",
+		"/C/Users/Admin/Desktop/PL/Image_Scripting/New folder/277px-Hs-2009-25-e-full.jpg",
+		"/C/Users/Admin/Desktop/PL/Image_Scripting.py",
+		"/C/Users/Admin/Desktop/PL/translator.py",
+		"/C/Users/Admin/Desktop/Pratik Lomte -2020/translator.py",
+		"/C/Users/Admin/Desktop/Pratik Lomte -2020/script.py",
+		"/C/Users/Admin/Desktop/Pratik Lomte -2020/test.py",
+		"/C/Users/Admin/Desktop/Pratik Lomte -2020/ex.py",
+		"/C/Users/Admin/Desktop/Pratik Lomte -2020/ex_script.py",
+		"/C/Users/Admin/Desktop/Pratik Lomte -2020/''.py",
+		"/C/Users/Admin/Desktop/Pratik Lomte -2020/pip install translate",
+		"/C/Users/Admin/Desktop/Pratik Lomte -2020/io.py",
+		"/C/Users/Admin/Desktop/y.py",
+		"/C/Users/Admin/Desktop/file IO.py",
+		"/C/Users/Admin/Desktop/io.py",
+		"/C/Users/Admin/Desktop/random.py",
+		"/C/Python/hi.py",
+		"/C/Users/Admin/AppData/Roaming/Sublime Text 3/Packages/User/Package Control.sublime-settings",
+		"/C/Users/Admin/AppData/Roaming/Sublime Text 3/Packages/User/Shopping/shopping_cart.py",
+		"/C/Users/Admin/AppData/Roaming/Sublime Text 3/Packages/User/main.py",
+		"/C/Users/Admin/AppData/Roaming/Sublime Text 3/Packages/User/uitilities.py"
+	],
+	"find":
+	{
+		"height": 0.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "psc",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1326,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1090,
+								1090
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Python 3/Python3.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 41.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 33.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "PassowordHAcked.sublime-project",
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"pdf.py"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
